@@ -1421,6 +1421,7 @@ neverallow {
   coredomain
   -init
   -ueventd
+  -charger
   -vold
   -system_writes_mnt_vendor_violators
 } mnt_vendor_file:dir *;
