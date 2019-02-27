@@ -288,6 +288,7 @@ allow init {
   proc_last_kmsg
   proc_kmsg # Open /proc/kmsg for logd service.
   proc_meminfo
+  proc_slabinfo
   proc_stat # Read /proc/stat for bootchart.
   proc_uptime
   proc_version
@@ -295,6 +296,7 @@ allow init {
 
 allow init {
   proc_abi
+  proc_cpu_alignment
   proc_dirty
   proc_hostname
   proc_hung_task
@@ -322,6 +324,7 @@ allow init {
 }:file w_file_perms;
 
 allow init {
+  proc_dt_firmware_android
   sysfs_dt_firmware_android
 }:file r_file_perms;
 
@@ -499,7 +502,7 @@ neverallow init shell_data_file:lnk_file read;
 neverallow init app_data_file:lnk_file read;
 
 # init should never execute a program without changing to another domain.
-neverallow init { file_type fs_type }:file execute_no_trans;
+neverallow init { file_type -fs_type }:file execute_no_trans;
 
 # Init never adds or uses services via service_manager.
 neverallow init service_manager_type:service_manager { add find };
