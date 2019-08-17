@@ -59,6 +59,9 @@ dontaudit storaged self:global_capability_class_set { dac_override dac_read_sear
 # For collecting bugreports.
 allow storaged dumpstate:fifo_file write;
 
+allow storaged sysfs:file r_file_perms;
+
+
 ###
 ### neverallow
 ###
